@@ -19,24 +19,24 @@ sudo apt install docker
 This will pull the image from Docker Hub into your system.
 
 ```
-docker pull amiller27/iarc7-base
+sudo docker pull amiller27/iarc7-base
 ```
 
 This will build a new docker image from iarc7-base.
 ```
-.\build.sh NEW_IMAGE_NAME
+sudo sh build.sh NEW_IMAGE_NAME
 ```
 This will create a new container from the image
 ```
-.\create.sh NEW_IMAGE_NAME NEW_CONTAINER_NAME
+sudo sh create.sh NEW_IMAGE_NAME NEW_CONTAINER_NAME
 ```
 To start the container run:
 ```
-docker start NEW_CONTAINER_NAME
+sudo docker start NEW_CONTAINER_NAME
 ```
 To run the container interactively use:
 ```
-docker exec -it NEW_CONTAINER_NAME /bin/bash
+sudo docker exec -it NEW_CONTAINER_NAME /bin/bash
 ```
 Afterword you should have a mostly complete ROS installation through docker,
 though if you don't have IARC7 common cloned, you should follow those directions
