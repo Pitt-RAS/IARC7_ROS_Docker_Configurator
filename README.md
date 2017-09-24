@@ -14,13 +14,13 @@ If you don't have docker, be sure to install it in the way that your system allo
 For Debian based systems:
 ```
 sudo apt install docker
-'''
+```
 
 This will pull the image from Docker Hub into your system.
 
 ```
 docker pull amiller27/iarc7-base
-'''
+```
 
 This will build a new docker image from iarc7-base.
 ```
