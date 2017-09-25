@@ -1,4 +1,5 @@
 #!/bin/bash
+DIRECTORY=~/iarc7
 
 # Check args
 if [ "$#" -ne 2 ]; then
