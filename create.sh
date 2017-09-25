@@ -18,9 +18,10 @@ docker create\
   --net=host\
   --name=$2\
   -e SHELL\
-  -e DISPLAY\
+  -e DISPLAY=$DISPLAY\
   -e DOCKER=1\
-  -v "$HOME:$HOME:rw"\
   -v "/tmp/.X11-unix:/tmp/.X11-unix:rw"\
+  -v $HOME/.Xauthority:/tmp/.Xauthority \
+  -e XAUTHORITY=/tmp/.Xauthority \
   -it\
   $1
