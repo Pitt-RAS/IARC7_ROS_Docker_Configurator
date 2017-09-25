@@ -11,6 +11,17 @@ ARG workspace
 
 # Basic Utilities
 RUN apt-get -y update && apt-get install -y sudo zsh ranger ssh tree tmux
+# Latest X11 / mesa GL
+
+RUN apt-get install -y\
+  xserver-xorg-dev-lts-wily\
+  libegl1-mesa-dev-lts-wily\
+  libgl1-mesa-dev-lts-wily\
+  libgbm-dev-lts-wily\
+  mesa-common-dev-lts-wily\
+  libgles2-mesa-lts-wily\
+  libwayland-egl1-mesa-lts-wily\
+libopenvg1-mesa
 
 # nice stuff to have
 #RUN apt-get install -y\
