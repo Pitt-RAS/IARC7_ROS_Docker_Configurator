@@ -14,14 +14,13 @@ RUN apt-get -y update && apt-get install -y sudo zsh ranger ssh tree tmux
 # Latest X11 / mesa GL
 
 RUN apt-get install -y\
-  xserver-xorg-dev-lts-wily\
-  libegl1-mesa-dev-lts-wily\
-  libgl1-mesa-dev-lts-wily\
-  libgbm-dev-lts-wily\
-  mesa-common-dev-lts-wily\
-  libgles2-mesa-lts-wily\
-  libwayland-egl1-mesa-lts-wily\
-libopenvg1-mesa
+  xserver-xorg-dev-lts-xenial\
+  libegl1-mesa-dev-lts-xenial\
+  libgl1-mesa-dev-lts-xenial\
+  libgbm-dev-lts-xenial\
+  mesa-common-dev-lts-xenial\
+  libgles2-mesa-lts-xenial
+
 
 # nice stuff to have
 #RUN apt-get install -y\
@@ -48,6 +47,9 @@ RUN \
         echo "${user} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${user}" && \
         chmod 0440 "/etc/sudoers.d/${user}"
 
+# Switch to root
+USER root
+RUN chown -R ${user}:${gid} /home/${user}
 # Switch to user
 USER "${user}"
 # This is required for sharing Xauthority

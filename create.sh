@@ -11,6 +11,10 @@ pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 popd > /dev/null
 
+if [ ! -d "$DIRECTORY" ]; then
+    mkdir -p ~/iarc7
+fi
+
 set -e
 
 # Run the container with shared X11
@@ -22,6 +26,7 @@ docker create\
   -e DOCKER=1\
   -v "/tmp/.X11-unix:/tmp/.X11-unix:rw"\
   -v $HOME/.Xauthority:/tmp/.Xauthority \
+  -v $HOME/iarc7:$HOME/iarc7 \
   -e XAUTHORITY=/tmp/.Xauthority \
   -it\
   $1
