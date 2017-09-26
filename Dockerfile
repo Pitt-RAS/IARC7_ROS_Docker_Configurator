@@ -39,7 +39,7 @@ EXPOSE 22
 # Mount the user's home directory
 #VOLUME "${home}"
 
-# Clone user into docker image and set up X11 sharing 
+# Clone user into docker image and set up X11 sharing
 RUN \
         mkdir -p /home/${user} && \
         echo "${user}:x:${uid}:${uid}:${user},,,:${home}:${shell}" >> /etc/passwd && \
