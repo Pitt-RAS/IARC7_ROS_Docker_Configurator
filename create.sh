@@ -14,7 +14,6 @@ popd > /dev/null
 
 if [ ! -d "$DIRECTORY" ]; then
     mkdir -p ~/iarc7 && \
-    rosdep update && \
     cd ~/iarc7 && \
     git clone https://github.com/Pitt-RAS/iarc7_common.git && \
     source /opt/ros/kinetic/setup.bash && \

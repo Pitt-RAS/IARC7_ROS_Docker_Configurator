@@ -49,6 +49,7 @@ RUN \
 
 # Switch to root
 USER root
+RUN rosdep update
 RUN chown -R ${user}:${gid} /home/${user}
 # Switch to user
 USER "${user}"
