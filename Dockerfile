@@ -21,10 +21,10 @@ RUN apt-get install -y\
   mesa-common-dev-lts-xenial\
   libgles2-mesa-lts-xenial
 
-
 # nice stuff to have
-#RUN apt-get install -y\
-#rviz\
+RUN apt-get install -y\
+        rviz\
+        ros-kinetic-rqt
 
 # The rest of ROS-desktop
 #RUN apt-get install -y ros-kinetic-desktop-full

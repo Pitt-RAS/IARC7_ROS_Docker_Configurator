@@ -13,7 +13,23 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 
 if [ ! -d "$DIRECTORY" ]; then
-    mkdir -p ~/iarc7
+    mkdir -p ~/iarc7 && \
+    rosdep update && \
+    cd ~/iarc7 && \
+    git clone https://github.com/Pitt-RAS/iarc7_common.git && \
+    source /opt/ros/kinetic/setup.bash && \
+    wstool init src iarc7_common/main.rosinstall && \
+    rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y && \
+    cd ~/iarc7 && \
+    wstool merge -t src iarc7_common/simulator.rosinstall && \
+    wstool update -t src && \
+    cd ~/iarc7 && \
+    cd src/iarc7_simulator && \
+    morse import sim && \
+    cd ~/iarc7 && \
+    catkin_make && \
+    echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc && \
+    source ~/.bashrc;
 fi
 
 set -e
@@ -25,6 +41,7 @@ docker create\
   -e SHELL\
   -e DISPLAY=$DISPLAY\
   -e DOCKER=1\
+  --device=/dev/dri:/dev/dri \
   -v "/tmp/.X11-unix:/tmp/.X11-unix:rw"\
   -v $HOME/.Xauthority:/tmp/.Xauthority \
   -v $HOME/iarc7:$HOME/iarc7 \
