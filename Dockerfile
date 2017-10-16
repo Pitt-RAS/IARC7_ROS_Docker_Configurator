@@ -10,7 +10,7 @@ ARG workspace
 # Replace 1000 with your user / group id
 
 # Basic Utilities
-RUN apt-get -y update && apt-get install -y sudo zsh ranger ssh tree tmux iputils-ping
+RUN apt-get -y update && apt-get install -y sudo zsh ranger ssh tree tmux iputils-ping vim
 # Latest X11 / mesa GL
 
 RUN apt-get install -y\
