@@ -23,7 +23,7 @@ RUN apt-get install -y\
 
 # nice stuff to have
 RUN apt-get install -y\
-        rviz\
+        ros-kinetic-rviz\
         ros-kinetic-rqt
 
 # The rest of ROS-desktop
