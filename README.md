@@ -71,9 +71,24 @@ This will create the docker container.
 The image shares it's  network interface with the host.
 
 ### FAQ
-I can't run any ROS commands (rosrun, roslaunch, catkin make)
-Run
+
+Q: I can't run any ROS commands (rosrun, roslaunch, catkin make)
+
+A: Run
 ```
 source ~/iarc7/devel/setup.bash
 ```
 After you have the ~/iarc7 directory set up.
+
+Q: Why is only ~/iarc7  mounted in the image? I want my whole home directory mounted!
+
+A: We only mount ~/iarc7 to better seperate the user's $HOME and the image's $HOME
+If you want to mount your whole home directory, edit create.sh
+
+```
+-v $HOME/iarc7:$HOME/iarc7 \
+```
+to
+```
+ -v $HOME/:$HOME/\
+ ```
