@@ -33,13 +33,13 @@ sudo docker pull amiller27/iarc7-base
 ### Build
 This will create the image with your user/group ID and home directory.
 ```
-./build.sh iarc7_yourusername
+./build.sh iarc7-yourusername
 ```
 
 ### Create
 Next you need to create a container from the image. The image shares it's  network interface with the host.
 ```
-.\create.sh iarc7_yourusername iarc7_yourusername_month_date
+.\create.sh iarc7-yourusername iarc7_yourusername_month_date
 ```
 
 ### Run
