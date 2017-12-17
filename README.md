@@ -10,11 +10,7 @@ For more info on Docker see here: https://docs.docker.com/engine/installation/li
 
 ### How to use
 This script uses the IARC7 ROS image from amiller27/iarc7-base.
-If you don't have docker, be sure to install it in the way that your system allows.
-For Debian based systems:
-```
-sudo apt install docker
-```
+If you don't have docker, be sure to install it in the way that your system allows. Check out the docs here: https://docs.docker.com/engine/installation/
 
 This will pull the image from Docker Hub into your system.
 
