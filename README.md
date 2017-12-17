@@ -39,18 +39,18 @@ This will create the image with your user/group ID and home directory.
 ### Create
 Next you need to create a container from the image. The image shares it's  network interface with the host.
 ```
-.\create.sh iarc7-yourusername iarc7_yourusername_month_date
+.\create.sh iarc7-yourusername iarc7_yourusername_month_date_year
 ```
 
 ### Run
 To start the container run:
 ```
-docker start iarc7_yourusername_month_date
+docker start iarc7_yourusername_month_date_year
 ```
 
 To open a shell inside the container use:
 ```
-docker exec -it iarc7_yourusername_month_date /bin/bash
+docker exec -it iarc7_yourusername_month_date_year /bin/bash
 ```
 
 At this point you should following the instructions in iarc7_common for setting up a workspace: https://github.com/Pitt-RAS/iarc7_common/wiki/Installation
