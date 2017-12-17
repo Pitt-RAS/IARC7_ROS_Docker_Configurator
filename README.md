@@ -53,6 +53,15 @@ To open a shell inside the container use:
 docker exec -it iarc7_yourusername_month_date_year /bin/bash
 ```
 
+You probably want to add the below lines to your .bashrc to make it easer to get into your  iarc7 container. The aliases allow you to automatically enter the docker container (it will be started if it isn't already running). You can also stop the docker container.
+```
+iarc7_name = iarc7_yourusername_month_date_year
+
+alias iarc7='[[ $(docker ps -f "name=$iarc7_name" --format '{{.Names}}') == $iarc7_name ]] || docker start $iarc7_name && \
+             docker exec -it $iarc7_name /bin/bash'
+alias iarc7_stop='docker stop $iarc7_name'
+```
+
 At this point you should following the instructions in iarc7_common for setting up a workspace: https://github.com/Pitt-RAS/iarc7_common/wiki/Installation
 
 ### FAQ
