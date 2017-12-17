@@ -13,7 +13,7 @@ This script uses the IARC7 ROS image from amiller27/iarc7-base.
 If you don't have docker, be sure to install it in the way that your system allows.
 For Debian based systems:
 ```
-sudo apt install docker-io
+sudo apt install docker.io
 ```
 
 This will pull the image from Docker Hub into your system.
