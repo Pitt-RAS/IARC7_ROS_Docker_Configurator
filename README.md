@@ -39,7 +39,7 @@ This will create the image with your user/group ID and home directory.
 ### Create
 Next you need to create a container from the image. The image shares it's  network interface with the host.
 ```
-.\create.sh iarc7-yourusername iarc7_yourusername_month_date_year
+./create.sh iarc7-yourusername iarc7_yourusername_month_date_year
 ```
 
 ### Run
