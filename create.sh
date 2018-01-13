@@ -3,7 +3,7 @@ DIRECTORY=~/iarc7
 
 # Check args
 if [ "$#" -ne 2 ]; then
-  echo "usage: ./run.sh IMAGE_NAME CONTAINER_NAME"
+  echo "usage: ./create.sh IMAGE_NAME CONTAINER_NAME"
   exit 1
 fi
 
@@ -13,22 +13,22 @@ SCRIPTPATH=`pwd`
 popd > /dev/null
 
 if [ ! -d "$DIRECTORY" ]; then
-    mkdir -p ~/iarc7 && \
-    cd ~/iarc7 && \
-    git clone https://github.com/Pitt-RAS/iarc7_common.git && \
-    source /opt/ros/kinetic/setup.bash && \
-    wstool init src iarc7_common/main.rosinstall && \
-    rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y && \
-    cd ~/iarc7 && \
-    wstool merge -t src iarc7_common/simulator.rosinstall && \
-    wstool update -t src && \
-    cd ~/iarc7 && \
-    cd src/iarc7_simulator && \
-    morse import sim && \
-    cd ~/iarc7 && \
-    catkin_make && \
-    echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc && \
-    source ~/.bashrc;
+    mkdir -p ~/iarc7
+#    cd ~/iarc7 && \
+#    git clone https://github.com/Pitt-RAS/iarc7_common.git && \
+#    source /opt/ros/kinetic/setup.bash && \
+#    wstool init src iarc7_common/main.rosinstall && \
+#    rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y && \
+#    cd ~/iarc7 && \
+#    wstool merge -t src iarc7_common/simulator.rosinstall && \
+#    wstool update -t src && \
+#    cd ~/iarc7 && \
+#    cd src/iarc7_simulator && \
+#    morse import sim && \
+#    cd ~/iarc7 && \
+#    catkin_make && \
+#    echo "source ~/iarc7/devel/setup.bash" >> ~/.bashrc && \
+#    source ~/.bashrc;
 fi
 
 set -e

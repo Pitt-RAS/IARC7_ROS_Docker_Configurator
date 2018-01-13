@@ -8,63 +8,61 @@ you can run Docker images.
 
 For more info on Docker see here: https://docs.docker.com/engine/installation/linux/ubuntulinux/
 
-### How to use
+### Prerequisites
 This script uses the IARC7 ROS image from amiller27/iarc7-base.
 If you don't have docker, be sure to install it in the way that your system allows. Check out the docs here: https://docs.docker.com/engine/installation/
 
-This will pull the image from Docker Hub into your system.
-
-```
-sudo docker pull amiller27/iarc7-base
-```
 Docker initially needs to run as root, if you are not added to the docker group
 Run the following to add your user to the docker group
 ```
-usermod -a -G docker $USER
+# usermod -a -G docker $USER
 ```
 Then either logout and log back in, or run
 ```
-newgrp docker
+# newgrp docker
 ```
 This adds your user to the docker group for your current shell (You need to do
 this for every new terminal emulator unitl you reboot or logout)
 
-This will build a new docker image from iarc7-base.
+### Pull base image
+Pull the base iarc7 image from Docker Hub into your system.
 ```
-.\build.sh NEW_IMAGE_NAME
+# docker pull amiller27/iarc7-base
 ```
-This will create a new container from the image
-```
-.\create.sh NEW_IMAGE_NAME NEW_CONTAINER_NAME
-```
-To start the container run:
-```
-docker start NEW_CONTAINER_NAME
-```
-To run the container interactively use:
-```
-docker exec -it NEW_CONTAINER_NAME /bin/bash
-```
-Afterword you should have a mostly complete ROS installation through docker,
-though if you don't have IARC7 common cloned, you should follow those directions
-next.
+
 ### Build
-
 This will create the image with your user/group ID and home directory.
-
 ```
-./build.sh IMAGE_NAME
+./build.sh iarc7-yourusername
 ```
 
 ### Create
-
-This will create the docker container.
-
+Next you need to create a container from the image. The image shares it's  network interface with the host.
 ```
-./create.sh IMAGE_NAME CONTAINER_NAME
+./create.sh iarc7-yourusername iarc7_yourusername_month_date_year
 ```
 
-The image shares it's  network interface with the host.
+### Run
+To start the container run:
+```
+docker start iarc7_yourusername_month_date_year
+```
+
+To open a shell inside the container use:
+```
+docker exec -it iarc7_yourusername_month_date_year /bin/bash
+```
+
+You probably want to add the below lines to your .bashrc to make it easer to get into your  iarc7 container. The aliases allow you to automatically enter the docker container (it will be started if it isn't already running). You can also stop the docker container.
+```
+iarc7_name="iarc7_yourusername_month_date_year"
+
+alias iarc7='[[ $(docker ps -f "name=$iarc7_name" --format '{{.Names}}') == $iarc7_name ]] || docker start $iarc7_name && \
+             docker exec -it $iarc7_name /bin/bash'
+alias iarc7_stop='docker stop $iarc7_name'
+```
+
+At this point you should following the instructions in iarc7_common for setting up a workspace: https://github.com/Pitt-RAS/iarc7_common/wiki/Installation
 
 ### FAQ
 
