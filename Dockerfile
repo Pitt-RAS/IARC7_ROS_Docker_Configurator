@@ -21,6 +21,8 @@ RUN apt-get install -y\
   mesa-common-dev-lts-xenial\
   libgles2-mesa-lts-xenial
 
+RUN apt-get purge -y\
+        rviz
 # nice stuff to have
 RUN apt-get install -y\
         ros-kinetic-rviz\
