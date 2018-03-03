@@ -44,6 +44,7 @@ docker create\
   --device=/dev/dri:/dev/dri \
   -v "/tmp/.X11-unix:/tmp/.X11-unix:rw"\
   -v "/dev/bus/usb:/dev/bus/usb"\
+  --privileged \
   -v $HOME/.Xauthority:/tmp/.Xauthority \
   -v $HOME/iarc7:$HOME/iarc7\
   -e XAUTHORITY=/tmp/.Xauthority \
